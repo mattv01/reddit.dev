@@ -11,27 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@showWelcome');
 
 
-Route::get('/sayhello/{name?}', function ($name = "World") {
-	$data = ['name' => $name];
-    return view('my-first-view', $data);
-});
+Route::get('/sayhello/{name?}', 'HomeController@sayHello');
 
 
-Route::get('/uppercase/{word?}', function ($word = "Hello") {
-    $data = ['low' => $word, 'caps' => strtoupper("$word")]; 
-    return view('uppercase', $data);
-});
+Route::get('/uppercase/{word?}', 'HomeController@uppercase');
 
 
-Route::get('/increment/{num?}', function ($num) {
-    $data = ['num' => ++$num];
-    return view('increment', $data);
-});
+Route::get('/increment/{num?}', 'HomeController@increment');
 
 
 Route::get('/add/{num1?}/{num2?}', function ($num1, $num2) {
