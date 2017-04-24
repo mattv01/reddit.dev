@@ -22,8 +22,9 @@ Route::get('/uppercase/{caps?}', function ($caps = "Hello") {
 
 
 Route::get('/increment/{num?}', function ($num) {
-    return $num+1;
+    return ++$num;
 });
+
 
 Route::get('/add/{num1?}/{num2?}', function ($num1, $num2) {
     return $num1+$num2;
