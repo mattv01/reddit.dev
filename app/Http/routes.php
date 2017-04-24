@@ -22,17 +22,15 @@ Route::get('/sayhello/{name?}', function ($name = "World") {
 });
 
 
-Route::get('/uppercase/{caps?}', function ($caps = "Hello") {
-    return strtoupper("$caps"); 
+Route::get('/uppercase/{word?}', function ($word = "Hello") {
+    $data = ['low' => $word, 'caps' => strtoupper("$word")]; 
+    return view('uppercase', $data);
 });
 
 
 Route::get('/increment/{num?}', function ($num) {
-    if (is_numeric($num)) {
-	    return ++$num;
-    } else {
-    	return "Input must be numeric.";
-    }
+    $data = ['num' => ++$num];
+    return view('increment', $data);
 });
 
 
