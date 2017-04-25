@@ -27,3 +27,6 @@ Route::get('/add/{num1?}/{num2?}', 'ExampleController@add');
 
 
 Route::get('/rolldice/{guess?}', 'ExampleController@rollDice');
+
+
+Route::resource('posts', 'PostsController');
