@@ -34,18 +34,18 @@ Route::resource('posts', 'PostsController');
 
 Route::get('orm-test', function ()
 {
-	$user = new \App\User();
-	$user->name = 'Vinny';
-	$user->email = 'vinny@yahoo.com';
-	$user->password = 'heythere';
-	$user->save();
+	// $user = new \App\User();
+	// $user->name = 'Vinny';
+	// $user->email = 'vinny@yahoo.com';
+	// $user->password = 'heythere';
+	// $user->save();
 
-	$post1 = new \App\Models\Post();
-	$post1->title = 'Eloquent is awesome!';
-	$post1->url='https://laravel.com/docs/5.1/eloquent';
-	$post1->content  = 'It is super easy to create a new post.';
-	$post1->created_by = 1;
-	$post1->save();
+	// $post1 = new \App\Models\Post();
+	// $post1->title = 'Eloquent is awesome!';
+	// $post1->url='https://laravel.com/docs/5.1/eloquent';
+	// $post1->content  = 'It is super easy to create a new post.';
+	// $post1->created_by = 1;
+	// $post1->save();
 	
 	// $post4 = new \App\Models\Post();
 	// $post4->title = 'Eloquent is really easy!';
