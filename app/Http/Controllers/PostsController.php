@@ -32,7 +32,7 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->url = $request->url;
         $post->content = $request->content;
-        $post->created_by = 1;
+        $post->created_by = 13;
         $post->save();
 
         Log::info("New post saved: ", $request->all());
@@ -81,7 +81,7 @@ class PostsController extends Controller
         $post->title = $request->title;
         $post->url = $request->url;
         $post->content = $request->content;
-        $post->created_by = 1;
+        $post->created_by = 13;
         $post->save();
 
         Log::info("Updated post: ", $request->all());
