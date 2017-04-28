@@ -5,30 +5,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        $user = new \App\User();
-        $user->name = 'Vince';
-        $user->email = 'vince@yahoo.com';
-        $user->password = Hash::make('password');
-        $user->save();
+        $faker = Faker\Factory::create();
 
-        $user1 = new \App\User();
-        $user1->name = 'Gavin';
-        $user1->email = 'gavin@yahoo.com';
-        $user1->password = Hash::make('password');
-        $user1->save();
-
-        $user2 = new \App\User();
-        $user2->name = 'Andrew';
-        $user2->email = 'andrew@yahoo.com';
-        $user2->password = Hash::make('password');
-        $user2->save();
-
+        for ($i = 0; $i <= 50; $i++) { 
+            $user = new \App\User();
+            $user->name = $faker->name;
+            $user->email = $faker->email;
+            $user->password = $faker->password;
+            $user->save();
+        }
     }
 }
