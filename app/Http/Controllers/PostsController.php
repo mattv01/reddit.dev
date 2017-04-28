@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Log;
 
 class PostsController extends Controller
 {
@@ -34,6 +35,8 @@ class PostsController extends Controller
         $post->created_by = 1;
         $post->save();
 
+        Log::info("New post saved: ", $request->all());
+
         $request->session()->flash('successMessage', 'Post saved successfully');
         return redirect()->action('PostsController@show', [$post->id]);
     }
@@ -43,8 +46,8 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         if (!$post) {
-            $request->session()->flash('errorMessage', 'Post cannot be found');
-            return redirect()->action('PostsController@index');
+            Log::error("post not found");
+            abort(404);
         }
         $data = [];
         $data['post'] = $post;
@@ -72,14 +75,16 @@ class PostsController extends Controller
         
         $post = Post::find($id);
         if (!$post) {
-            $request->session()->flash('errorMessage', 'Post cannot be found');
-            return redirect()->action('PostsController@index');
+            Log::error("post not found");
+            abort(404);
         }
         $post->title = $request->title;
         $post->url = $request->url;
         $post->content = $request->content;
         $post->created_by = 1;
         $post->save();
+
+        Log::info("Updated post: ", $request->all());
 
         $request->session()->flash('successMessage', 'Post updated successfully');
         return redirect()->action('PostsController@show', [$post->id]);
@@ -90,10 +95,12 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         if (!$post) {
-            $request->session()->flash('errorMessage', 'Post cannot be found');
-            return redirect()->action('PostsController@index');
+            Log::error("post not found");
+            abort(404);
         }
         $post->delete();
+
+        Log::info("Post deleted: ", $request->all());
 
         $request->session()->flash('successMessage', 'Post deleted successfully');
         return redirect()->action('PostsController@index');
