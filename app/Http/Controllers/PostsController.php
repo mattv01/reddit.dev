@@ -17,7 +17,12 @@ class PostsController extends Controller
 
     public function index(Request $request)
     {
-        $posts = Post::with('user')->paginate(6);
+        if (isset($request->search)) {
+            $posts = Post::with('user')->where('title', 'like', "%$request->search%")->orderBy('created_at', 'DESC')->paginate(6);
+        } else {
+            $posts = Post::with('user')->paginate(6);
+        }
+
         $data = [];
         $data['posts'] = $posts;
         return view('posts.index')->with($data);
