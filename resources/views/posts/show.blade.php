@@ -15,10 +15,8 @@
 	</tr>
 </table>
 
-<!-- <h1>{{$post->title}}</h1>
-	<p><a href="{{$post->url}}" target="_blank">{{$post->url}}</a></p>
-	<p>{{$post->content}}</p> -->
-
+@if (Auth::id() == $post->created_by)
 	<a class="btn btn-primary" href="{{action('PostsController@edit', [$post->id])}}">Edit</a>
+@endif
 
 @stop
