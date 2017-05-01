@@ -16,17 +16,14 @@
 			<ul class="nav navbar-nav" id="navbar">
 				<li><a href="{{action('HomeController@showWelcome')}}">Home</a></li>
 				<li><a href="{{action('PostsController@index')}}">All Posts</a></li>
-				<li><a href="{{action('PostsController@create')}}">Create Post</a></li>
-				<li><a href="{{action('PostsController@index')}}">Signup</a></li>
-				<li><a href="{{action('PostsController@index')}}">Login</a></li>
-				<!-- <?php if (Auth::check()):?>
+				<?php if (Auth::check()):?>
 					<li><a href="/account">Your Account</a></li>
  					<li><a href="{{action('PostsController@create')}}">Create Post</a></li>
- 					<li><a href="/logout">Logout</a></li>
+ 					<li><a href="{{action('Auth\AuthController@getLogout')}}">Logout</a></li>
 				<?php else: ?>
 					<li><a href="{{action('PostsController@index')}}">Signup</a></li>
-					<li><a href="{{action('PostsController@index')}}">Login</a></li>
-				<?php endif;?> -->
+					<li><a href="{{action('Auth\AuthController@getLogin')}}">Login</a></li>
+				<?php endif;?>
 			</ul>
 			<!-- <form class="navbar-form navbar-right" id="search" method="get" action="/search">
 				<div class="form-group">
