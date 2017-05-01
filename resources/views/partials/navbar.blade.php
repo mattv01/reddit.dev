@@ -21,7 +21,7 @@
  					<li><a href="{{action('PostsController@create')}}">Create Post</a></li>
  					<li><a href="{{action('Auth\AuthController@getLogout')}}">Logout</a></li>
 				<?php else: ?>
-					<li><a href="{{action('PostsController@index')}}">Signup</a></li>
+					<li><a href="{{action('Auth\AuthController@getRegister')}}">Signup</a></li>
 					<li><a href="{{action('Auth\AuthController@getLogin')}}">Login</a></li>
 				<?php endif;?>
 			</ul>
