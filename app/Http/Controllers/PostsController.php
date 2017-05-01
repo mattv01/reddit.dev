@@ -5,17 +5,19 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Log;
+use Auth;
+use Session;
 
 class PostsController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth', ['create', 'store', 'edit', 'update', 'destroy']);
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=>['index', 'show']]);
+    }
 
     public function index(Request $request)
     {
-        $posts = Post::paginate(4);
+        $posts = Post::with('user')->paginate(6);
         $data = [];
         $data['posts'] = $posts;
         return view('posts.index')->with($data);
@@ -65,6 +67,10 @@ class PostsController extends Controller
         $post = Post::find($id);
         if (!$post) {
             $request->session()->flash('errorMessage', 'Post cannot be found');
+            return redirect()->action('PostsController@index');
+        }
+        if ($post->user->id != Auth::id()) {
+            Session::flash('errorMessage', "You are not authorized to edit that post");
             return redirect()->action('PostsController@index');
         }
         $data = [];
