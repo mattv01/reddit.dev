@@ -31,6 +31,7 @@
 			</div>
 		</div>
 		{{ method_field('PUT') }}
+		<input type="hidden" name="id" value="{{Auth::id()}}">
 		<input type="submit" value="Update Post" class="btn btn-default btn-success">
 	</form>
 
