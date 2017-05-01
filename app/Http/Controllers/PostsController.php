@@ -18,7 +18,8 @@ class PostsController extends Controller
     public function index(Request $request)
     {
         if (isset($request->search)) {
-            $posts = Post::with('user')->where('title', 'like', "%$request->search%")->orderBy('created_at', 'DESC')->paginate(6);
+            $posts = Post::with('user')->where('title', 'like', "%$request->search%")->orderBy('created_at', 'DESC')->paginate(6)->appends(['search'=>$request->search]);
+
         } else {
             $posts = Post::with('user')->paginate(6);
         }
