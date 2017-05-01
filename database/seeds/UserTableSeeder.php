@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
             $user = new \App\User();
             $user->name = $faker->name;
             $user->email = $faker->email;
-            $user->password = bcrypt('secret');
+            $user->password = 'secret';
             $user->save();
         }
     }
