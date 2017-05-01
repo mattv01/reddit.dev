@@ -14,7 +14,7 @@
 </head>
 <body>
 @include('partials.navbar')
-	<div class="container" style="margin-top: 10%">
+	<div class="container" style="margin-top: 5%">
 		@if (Session::has('errorMessage'))
     		<div class="alert alert-danger">{{ session('errorMessage') }}</div>
 		@endif
