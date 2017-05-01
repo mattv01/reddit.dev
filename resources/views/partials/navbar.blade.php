@@ -25,12 +25,12 @@
 					<li><a href="{{action('Auth\AuthController@getLogin')}}">Login</a></li>
 				<?php endif;?>
 			</ul>
-			<!-- <form class="navbar-form navbar-right" id="search" method="get" action="/search">
+			<form class="navbar-form navbar-right" id="search" method="get" action="{{action('PostsController@index')}}">
 				<div class="form-group">
 					<input type="text" name="search" class="form-control" placeholder="Search Post" required>
-					<button type="submit" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+					<button type="submit" class="btn btn-default">Search</button>
 				</div>
-			</form> -->
+			</form>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
 </nav>
