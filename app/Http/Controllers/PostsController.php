@@ -8,6 +8,11 @@ use Log;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['create', 'store', 'edit', 'update', 'destroy']);
+    }
+
     public function index(Request $request)
     {
         $posts = Post::paginate(4);
