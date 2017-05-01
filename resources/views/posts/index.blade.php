@@ -2,22 +2,24 @@
 
 @section('content')
 	<h1>All Posts</h1>
-	<table class="table">
-		<tr>
-			<th>Post #</th>
-			<th>Title</th>
-			<th>URL</th>
-			<th>Content</th>
-		</tr>
-		@foreach ($posts as $post)
-		<tr>
-			<td>{{$post->id}}</td>
-			<td><a style="color: black" href="{{action('PostsController@show', [$post->id])}}">{{$post->title}}</a></td>
-			<td><a href="{{$post->url}}" target="_blank">{{$post->url}}</a></td>
-			<td>{{$post->content}}</td>
-		</tr>
-		@endforeach
-	</table>
+
+	@foreach($posts as $post)
+        <article class="col-md-4" style="height: 20em">
+            <h3>{{ $post->id }}: <a href="{{ action('PostsController@show', $post->id) }}">{{ $post->title }}</a></h3>
+            <p>{{ $post->url }}</p>
+            <p>{{ $post->content }}</p>
+            @if (Auth::id() == $post->created_by)
+            	<p>Posted By <strong>You</strong></p>
+            @else
+            	<p>Posted By <strong>{{$post->user->name}}</strong></p>
+            @endif
+            <p>Writted on: {{ $post->created_at->setTimezone('America/Chicago')->toDayDateTimeString() }}</p>            
+            @if($post->created_at != $post->updated_at)
+                <p>Edited {{ $post->updated_at->setTimezone('America/Chicago')->diffForHumans() }}</p>
+            @endif
+
+        </article>
+    @endforeach
 	
 {!! $posts->render() !!}
 
