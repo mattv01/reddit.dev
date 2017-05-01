@@ -16,7 +16,8 @@
     	    <input type="checkbox" name="remember"> Remember Me
     	</div>
     	<div class="form-group">
-    	    <button type="submit" class="btn btn-primary">Login</button>
+    	    <button type="submit" class="btn btn-success">Login</button>
+    	    <a href="/register" class="btn btn-primary pull-right">Go to Sign Up</a>
     	</div>
 	</form>
 	
