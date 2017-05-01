@@ -13,9 +13,9 @@
             @else
             	<p>Posted By <strong>{{$post->user->name}}</strong></p>
             @endif
-            <p>Writted on: {{ $post->created_at->setTimezone('America/Chicago')->toDayDateTimeString() }}</p>            
+            <p>Writted on: {{ $post->created_at->toDayDateTimeString() }}</p>            
             @if($post->created_at != $post->updated_at)
-                <p>Edited {{ $post->updated_at->setTimezone('America/Chicago')->diffForHumans() }}</p>
+                <p>Edited {{ $post->updated_at->diffForHumans() }}</p>
             @endif
 
         </article>
