@@ -25,4 +25,9 @@ class HomeController extends Controller
     	$data = ['num' => ++$num];
     	return view('increment', $data);
 	}
+
+    public function showAccount()
+    {
+        return view('account');
+    }
 }

@@ -14,6 +14,9 @@
 Route::get('/', 'HomeController@showWelcome');
 
 
+Route::get('/account', 'HomeController@showAccount');
+
+
 Route::get('/sayhello/{name?}', 'HomeController@sayHello');
 
 
