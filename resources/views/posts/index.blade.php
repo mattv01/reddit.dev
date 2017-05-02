@@ -13,7 +13,7 @@
             @else
             	<p>Posted By <strong>{{$post->user->name}}</strong></p>
             @endif
-            <p>Writted on: {{ $post->created_at->toDayDateTimeString() }}</p>            
+            <p>Written on: {{ $post->created_at->toDayDateTimeString() }}</p>            
             @if($post->created_at != $post->updated_at)
                 <p>Edited {{ $post->updated_at->diffForHumans() }}</p>
             @endif
