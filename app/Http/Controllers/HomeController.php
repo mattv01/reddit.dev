@@ -1,12 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\PostsController;
+use App\Models\Post;
+
 
 class HomeController extends Controller
 {
     public function showWelcome()
     {
-        return view('welcome');
+        $posts = Post::with('user')->paginate(3);
+        if (!$posts) {
+            Log::error("post not found");
+            abort(404);
+        }
+
+        $data = [];
+        $data['posts'] = $posts;
+        return view('welcome')->with($data);
     }
 
     public function sayHello($name)
@@ -28,6 +39,13 @@ class HomeController extends Controller
 
     public function showAccount()
     {
-        return view('account');
+        $posts = Post::all();
+        if (!$posts) {
+            Log::error("post not found");
+            abort(404);
+        }
+        $data = [];
+        $data['posts'] = $posts;
+        return view('account')->with($data);
     }
 }
